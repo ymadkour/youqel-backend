@@ -24,7 +24,7 @@ http://www.springframework.org/schema/task/spring-task-3.2.xsd">
     <context:annotation-config />
 
 	<context:property-placeholder
-		location="classpath:/META-INF/spring/system.properties, file:/opt/youqel/etc/youqel/**/*.properties"
+		location="classpath:/META-INF/spring/system.properties, classpath:/META-INF/spring/application.properties"
 		ignore-unresolvable="true" />
 		
 		
@@ -35,7 +35,7 @@ http://www.springframework.org/schema/task/spring-task-3.2.xsd">
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
 		<property name="username" value="youqel.app@gmail.com" />
-		<property name="password" value="Sinstall1!" />
+		<property name="password" value="" />
 		<property name="port" value="587" />
 		<property name="defaultEncoding" value="UTF-8" />
  

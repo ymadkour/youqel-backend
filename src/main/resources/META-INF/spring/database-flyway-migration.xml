@@ -14,7 +14,7 @@
 		<property name="dataSource" ref="dataSource" />		
 		<property name="table" value="flyway_schema_version" /> <!-- meta table will be place in first schema listed in 'schemas' -->
 		<property name="schemas" value="public,sec" />
-		<property name="locations" value="classpath:db-migration" />
+		<property name="locations" value="classpath:db/migration" />
 	</bean>
 
 </beans>

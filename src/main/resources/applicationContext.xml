@@ -24,7 +24,7 @@ http://www.springframework.org/schema/task/spring-task-3.2.xsd">
     <context:annotation-config />
 
 	<context:property-placeholder
-		location="classpath:/META-INF/spring/system.properties, file:/opt/youqel/etc/youqel/**/*.properties"
+		location="classpath:/META-INF/spring/system.properties, classpath:/META-INF/spring/application.properties"
 		ignore-unresolvable="true" />
 		
 		
