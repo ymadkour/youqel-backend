@@ -1,0 +1,64 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:cache="http://www.springframework.org/schema/cache"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-4.0.xsd
+http://www.springframework.org/schema/cache
+http://www.springframework.org/schema/cache/spring-cache.xsd
+http://www.springframework.org/schema/task
+http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+
+    <!-- this is imported by root-context.xml -->
+	<task:annotation-driven />
+
+    <context:component-scan base-package="com.youqel">
+        <!-- Controllers are configured in mvc-dispatcher-servlet.xml -->
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
+    </context:component-scan>
+
+    <context:annotation-config />
+
+	<context:property-placeholder
+		location="classpath:/META-INF/spring/system.properties, file:/opt/youqel/etc/youqel/**/*.properties"
+		ignore-unresolvable="true" />
+		
+		
+    <bean id="jackson2HttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+    </bean>
+
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="username" value="youqel.app@gmail.com" />
+		<property name="password" value="Sinstall1!" />
+		<property name="port" value="587" />
+		<property name="defaultEncoding" value="UTF-8" />
+ 
+		<!-- The name of the property, following JavaBean naming conventions -->
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.port">25</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.starttls.required">true</prop>
+				<prop key="mail.debug">false</prop>
+			</props>
+		</property>
+	</bean>    
+
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+  		<property name="velocityProperties">
+	 		<value>
+	  			resource.loader=class
+	  			class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+	 		</value>
+  		</property>
+	</bean> 
+	
+</beans>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<!-- this is imported by root-context.xml -->
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${db.youqel.jdbc.driver}" />
+		<property name="url" value="${db.youqel.jdbc.url}" />
+		<property name="username" value="${db.youqel.jdbc.user}" />
+		<property name="password" value="${db.youqel.jdbc.password}" />
+		<property name="maxWait" value="5000" />
+		<property name="maxActive" value="25" />
+	</bean>
+
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="fetchSize" value="500" />
+	</bean>
+	
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.youqel" />
+
+		<property name="jpaVendorAdapter">
+			<bean
+				class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+			</bean>
+		</property>
+		<property name="jpaProperties">
+			<bean id="jpaProperties"
+				class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+				<property name="properties">
+					<props>
+						<prop key="eclipselink.cache.shared.default">false</prop>
+						
+<!-- 						<prop key="javax.persistence.schema-generation.create-database-schemas">true</prop> -->
+<!-- 						<prop key="javax.persistence.schema-generation.database.action">create</prop> -->
+<!-- 						<prop key="javax.persistence.schema-generation.scripts.action">create</prop> -->
+<!-- 						<prop key="javax.persistence.schema-generation.scripts.create-target">create.sql</prop> -->
+						
+						<prop key="eclipselink.logging.level">INFO</prop>
+						<prop key="eclipselink.logging.level.sql">INFO</prop>
+					</props>
+				</property>
+			</bean>
+		</property>
+
+		<property name="jpaDialect">
+			<bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect" />
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+	</bean>
+	
+</beans>

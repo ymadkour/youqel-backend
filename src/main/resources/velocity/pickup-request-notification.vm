@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	</head>
+  <body style="font-family: 'Open Sans', sans-serif;">
+    <p>
+    	Hallo,
+	</p>
+	<p>
+		A new Pick up request has been created with the following information:
+	</p>
+	
+	<div
+		style="display: block; overflow: auto; margin-bottom: 10px; width: 100%;">
+		<div
+			style="display: block; overflow: auto; margin-bottom: 10px; width: 100%; border-bottom: 2px solid #9c5ea2; color: #9c5ea2; font-weight: 700; width: 100%; text-transform: uppercase; padding: 15px 0; margin-bottom: 20px; margin-top: 20px; float: left;">
+			Pickup Request Information</div>
+
+
+		<table style="width: 100%">
+			<tr>
+				<th style="text-align: left; width: 50%;">Pickup Location</th>
+				<td style="text-align: left; width: 50%;">$request.getPickupLocation()</td>
+			</tr>
+			
+			<tr>
+				<th style="text-align: left; width: 50%;">Dropoff Location</th>
+				<td style="text-align: left; width: 50%;">$request.getDropoffLocation()</td>
+			</tr>
+			
+			<tr>
+				<th style="text-align: left; width: 50%;">Pickup date</th>
+				<td style="text-align: left; width: 50%;">$pickupDate</td>
+			</tr>
+			
+			<tr>
+				<th style="text-align: left; width: 50%;">Pickup truck</th>
+				<td style="text-align: left; width: 50%;">$request.getPickupTruckType()</td>
+			</tr>
+			
+			<tr>
+				<th style="text-align: left; width: 50%;">Shipper name</th>
+				<td style="text-align: left; width: 50%;">$request.getShipper().getName()</td>
+			</tr>
+
+			<tr>
+				<th style="text-align: left; width: 50%;">Shipper mobile</th>
+				<td style="text-align: left; width: 50%;">$request.getShipper().getMobile()</td>
+			</tr>
+
+			<tr>
+				<th style="text-align: left; width: 50%;">Shipper company</th>
+				<td style="text-align: left; width: 50%;">$request.getShipper().getCompany()</td>
+			</tr>
+			
+			<tr>
+                <th style="text-align: left; width: 50%;">Receipient name</th>
+                <td style="text-align: left; width: 50%;">$request.getReceipient().getName()</td>
+            </tr>
+
+            <tr>
+                <th style="text-align: left; width: 50%;">Receipient mobile</th>
+                <td style="text-align: left; width: 50%;">$request.getReceipient().getMobile()</td>
+            </tr>
+            
+            <tr>
+                <th style="text-align: left; width: 50%;">Details</th>
+                <td style="text-align: left; width: 50%;">$request.getDetails()</td>
+            </tr>
+
+		</table>
+
+		</div>
+	</div>
+    <p>
+		Regards,
+		<br/>
+		<em>Your Youqel Team</em>
+    </p>
+  </body>
+</html>
